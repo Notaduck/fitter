@@ -1,0 +1,69 @@
+{
+  "name": "next-leaflet-starter-typescript",
+  "homepage": "https://typescript-next-leaflet-starter.vercel.app",
+  "version": "0.1.0",
+  "author": "Richard Unterberg <https://github.com/richard-unterberg>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richard-unterberg/next-leaflet-starter-typescript/"
+  },
+  "bugs": {
+    "url": "https://github.com/richard-unterberg/next-leaflet-starter-typescript/issues"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-leaflet/core": "^2.1.0",
+    "codesandbox": "^2.2.3",
+    "d3": "^7.8.5",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.12.16",
+    "global": "^4.4.0",
+    "leaflet": "^1.9.3",
+    "leaflet.markercluster": "^1.5.3",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.121.0",
+    "mathjs": "^11.8.0",
+    "next": "^13.2.3",
+    "react": "^18.2.0",
+    "react-d3": "^0.4.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "react-resize-detector": "^8.0.4",
+    "react-use-measure": "^2.1.1",
+    "rechart": "^0.0.1",
+    "recharts": "^2.6.2",
+    "simplify-js": "^1.2.4",
+    "tailwindcss": "^3.2.6",
+    "tooltip": "^1.6.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@types/leaflet": "^1.9.1",
+    "@types/leaflet.markercluster": "^1.5.1",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "18.13.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "8.34.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-next": "^13.2.3",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "typescript": "4.9.5"
+  }
+}
