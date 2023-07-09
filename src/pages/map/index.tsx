@@ -1,5 +1,4 @@
 import Head from 'next/head'
-
 import Map from '@components/Map'
 import ride from '../../data/file.json'
 import { Chart } from '@components/graph/chart'
@@ -9,10 +8,24 @@ const MapPage = () => {
 
   const km = 1000;
 
-  let points: Array<{ x: number, y: number }> = ride.records.filter(record => record.position_lat && record.position_long
+  let DataSetSpeed: Array<{ x: number, y: number }> = ride.records.filter(record => record.position_lat && record.position_long
   ).map(record => ({
     x: record.distance / km,
     y: record.speed,
+  }))
+
+
+  let DataSetCadence: Array<{ x: number, y: number }> = ride.records.filter(record => record.position_lat && record.position_long
+  ).map(record => ({
+    x: record.distance / km,
+    y: record.cadence,
+  }))
+
+
+  let DataSetHeartRate: Array<{ x: number, y: number }> = ride.records.filter(record => record.position_lat && record.position_long
+  ).map(record => ({
+    x: record.distance / km,
+    y: record.heart_rate,
   }))
 
   return (
@@ -35,7 +48,7 @@ const MapPage = () => {
         <Map />
       </div>
 
-      <Chart entries={points} />
+      <Chart entries={DataSetSpeed} />
     </div>
   )
 }

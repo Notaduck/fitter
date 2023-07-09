@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
+import { line, curveCardinal } from "d3-shape";
 
 type Point = {
     x: number,
@@ -38,20 +39,24 @@ function ChartInner({ data, width, height }: ChartInnerProps) {
         left: 24,
     };
 
+    const maxX = d3.max(data, (d) => d.x);
+    console.log(maxX)
+    const [minY, maxY] = d3.extent(data.map((d) => d.y));
     let xScale = d3
         .scaleLinear()
-        .domain([0, data.length - 1])
+        .domain([0, maxX])
         .range([margin.left, width - margin.right]);
 
     let yScale = d3
         .scaleLinear()
-        .domain(d3.extent(data.map((d) => d.y)))
+        .domain([minY, maxY])
         .range([height - margin.bottom, margin.top]);
 
     let line = d3
         .line()
         .x((d, i) => xScale(i))
         .y((d) => yScale(d.y));
+
 
     let d = line(data);
 
@@ -61,50 +66,51 @@ function ChartInner({ data, width, height }: ChartInnerProps) {
 
     return (
         <>
+
+            {/* X axis */}
             <svg className="" viewBox={`0 0 ${width} ${height}`}>
-                {/* X axis */}
-                {/* X axis */}
-                {xScale.ticks(10).map(x => (
-                    <g
-                        key={x}
-                        className="text-gray-400"
-                        transform={`translate(${xScale(x)},0)`}
-                    >
-                        <text
-                            x={xScale(x) / 10}
-                            y={height - 5}
-                            textAnchor="middle"
-                            fill="currentColor"
-                            className="text-[18px]"
+                {
+                    xScale.ticks().map((x) => (
+                        <g
+                            key={x}
+                            className="text-gray-400"
+                            transform={`translate(${xScale(x)},0)`}
                         >
-                            {x}
-                        </text>
-                    </g>
-                ))}
+                            <text
+                                x={0}
+                                y={height - 5}
+                                textAnchor="middle"
+                                fill="currentColor"
+                                className="text-[18px]"
+                            >
+                                {x.toFixed(1)}
+                            </text>
+                        </g>
+                    ))}
 
                 {/* Y axis */}
-                {yScale.ticks(10).map(y => (
-
-                    <g
-                        transform={`translate(0,${yScale(y)})`}
-                        className="text-gray-400"
-                        key={y}
-                    >
-                        <line
-                            x1={margin.left}
-                            x2={width - margin.right}
-                            stroke="currentColor"
-                            strokeDasharray="1,3"
-                        />
-                        <text
-                            alignmentBaseline="middle"
-                            className="text-[10px]"
-                            fill="currentColor"
+                {
+                    yScale.ticks(10).map((y) => (
+                        <g
+                            transform={`translate(0, ${yScale(y)})`}
+                            className="text-gray-400"
+                            key={y}
                         >
-                            {y}
-                        </text>
-                    </g>
-                ))}
+                            <line
+                                x1={margin.left}
+                                x2={width - margin.right}
+                                stroke="currentColor"
+                                strokeDasharray="1,3"
+                            />
+                            <text
+                                alignmentBaseline="middle"
+                                className="text-[10px]"
+                                fill="currentColor"
+                            >
+                                {y.toFixed(1)}
+                            </text>
+                        </g>
+                    ))}
 
                 {/* Line */}
                 <motion.path
